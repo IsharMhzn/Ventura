@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="demogame"
+run/main_scene="res://src/GameMap/Map.tscn"
 config/icon="res://icon.png"
 
 [display]
