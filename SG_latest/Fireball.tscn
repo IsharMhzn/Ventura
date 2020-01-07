@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fireball.gd" type="Script" id=1]
+[ext_resource path="res://art/coinGold.png" type="Texture" id=2]
+[ext_resource path="res://art/gemYellow.png" type="Texture" id=3]
+[ext_resource path="res://art/gemBlue.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "New Anim",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "fireball",
+"speed": 13.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 33.5858
+
+[node name="bullet" type="Area2D"]
+position = Vector2( 229.866, 190.906 )
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="bullet_AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "fireball"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
