@@ -41,7 +41,6 @@ func _dialogs() -> void:
 		dialog.get_node("Text").set_bbcode(dialog.dialog_character_4[dialog.page])
 		dialog.get_node("Text").set_visible_characters(0)
 		print("character 4")
-	
 
 
 
@@ -52,4 +51,3 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 func _on_Area2D_area_exited(area: Area2D) -> void:
 	is_inside_area = false
 	is_talkable = true
-	dialog.queue_free()

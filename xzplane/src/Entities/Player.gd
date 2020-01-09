@@ -1,5 +1,7 @@
 extends Entity
 
+var health = 150
+
 func _physics_process(delta: float) -> void:
 	var axis =  get_input_axis()
 	if axis == Vector2.ZERO:
@@ -20,3 +22,9 @@ func apply_acceleration(value) -> void:
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	print("area entered")
+
+
+func _on_Area2D_body_entered(body: PhysicsBody2D) -> void:
+	health -= 30
+	print("Player's health" + str(health))
+	pass
