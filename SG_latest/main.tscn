@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ground.tres" type="TileSet" id=2]
 [ext_resource path="res://enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://art/layers/bakground.png" type="Texture" id=4]
+[ext_resource path="res://Screenshake.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,12 +22,17 @@ position = Vector2( 276.566, 253.243 )
 
 [node name="enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 566.874, 354.539 )
+hp = 4
 
 [node name="enemy3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1079.2, 346.747 )
+hp = 8
+size = Vector2( 1, 1 )
 
 [node name="enemy4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 424.668, 603.886 )
+hp = 12
+size = Vector2( 1, 1 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_scale = Vector2( 0.5, 0.5 )
@@ -38,3 +44,9 @@ motion_mirroring = Vector2( 875, 0 )
 scale = Vector2( 6.25587, 5.16875 )
 texture = ExtResource( 4 )
 centered = false
+
+[node name="Screenshake" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="Screenshake"]
+[connection signal="tween_completed" from="Screenshake/Tween" to="Screenshake" method="_on_Tween_tween_completed"]

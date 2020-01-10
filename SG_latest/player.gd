@@ -63,7 +63,11 @@ func _physics_process(delta):
 				$AnimatedSprite.play("fall")
 			
 		velocity = move_and_slide(velocity, FLOOR)
-
+		
+		if get_slide_count() > 0:
+			for i in range(get_slide_count()):
+				if "enemy" in get_slide_collision(i).collider.name:
+					dead()
 	
 
 func _on_Timer_timeout():
