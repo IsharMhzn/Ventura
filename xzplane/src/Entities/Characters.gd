@@ -43,7 +43,6 @@ func _dialogs() -> void:
 		print("character 4")
 
 
-
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	print("Dialogue box will appear")
 	is_inside_area = true

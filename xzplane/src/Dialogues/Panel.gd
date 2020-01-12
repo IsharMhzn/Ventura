@@ -16,4 +16,4 @@ func _on_Timer_timeout() -> void:
 	$Text.set_visible_characters($Text.get_visible_characters() + 1)
 
 func _on_Button_pressed() -> void:
-	queue_free()
+	set_visible(false)
