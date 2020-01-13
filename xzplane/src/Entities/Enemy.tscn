@@ -34,7 +34,13 @@ text = "Health = 500"
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Fire" parent="." instance=ExtResource( 2 )]
+[node name="Fire_1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1, 0 )
+
+[node name="Fire_2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1, 0 )
+
+[node name="Fire_3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1, 0 )
 
 [node name="icon" type="Sprite" parent="."]

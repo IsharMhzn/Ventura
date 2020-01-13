@@ -10,11 +10,8 @@ radius = 18.0278
 radius = 16.7631
 
 [node name="Fire" type="KinematicBody2D"]
-position = Vector2( 92, 76 )
+position = Vector2( 74, 62 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -33,4 +30,5 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 disabled = true
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="." method="_on_Timer_timeout"]

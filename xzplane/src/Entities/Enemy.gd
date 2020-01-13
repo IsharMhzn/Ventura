@@ -5,6 +5,7 @@ var enemy_health = 500
 
 func _ready() -> void:
 	print(enemy_health)
+	print(position)
 	
 func _physics_process(delta: float) -> void:
 	if enemy_health < 1:
