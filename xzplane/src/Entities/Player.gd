@@ -1,6 +1,6 @@
 extends Entity
 
-var health = 150
+var health = 1500
 
 func _ready() -> void:
 	print("Player's current health = " + str(health))
@@ -26,16 +26,19 @@ func get_input_axis() -> int:
 
 func apply_acceleration(value) -> void:
 	motion += value
-	motion = motion.clamped(MAX_SPEED)
+	motion = motion.clamped(900)
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	var Fires = ['Fire_1', 'Fire_2', 'Fire_3']
 	if area.get_parent().name in Fires:
-		health -= 30
+		health -= 10
 		print("Player's health " + str(health))
 	elif area.get_parent().name == "Enemy":
-		health -= 50
+		health -= 25
 		print("Collision with enemy! Player's health " + str(health))
+	elif area.get_parent().name == "big_fire":
+		health -= 50
+		print("Player's health " + str(health))
 	print("Player's current health = " + str(health))
 
 

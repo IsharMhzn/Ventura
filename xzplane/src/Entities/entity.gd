@@ -6,6 +6,7 @@ export var MAX_SPEED = 300
 var acceleration = 3000
 var motion = Vector2.ZERO
 var screensize
+var is_enemy_dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

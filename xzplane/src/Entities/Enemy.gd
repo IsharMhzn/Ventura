@@ -10,6 +10,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if enemy_health < 1:
 		queue_free()
+		is_enemy_dead = true
 
 func _on_Area2D_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":

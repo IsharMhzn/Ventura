@@ -1,7 +1,7 @@
 extends "res://src/Entities/entity.gd"
 
-onready var portal = get_parent().get_parent().get_node("Portal2D")
 onready var dialog: Panel = $DialogBox
+onready var portal = get_parent().get_parent().get_node("Portal")
 
 var is_talkable = true
 var is_inside_area = false
@@ -32,12 +32,6 @@ func _dialogs() -> void:
 		print("character 1")
 		
 	elif self.name == "Character_2":
-		if dialogs_page["char_2"]["talked"]:
-			if dialogs_page["char_2"]["shovel"] == true:
-				pass
-			elif dialogs_page["char_2"]["page"] < 1:
-				dialogs_page["char_2"]["page"] += 1
-		
 		is_talkable = false
 		dialog.set_visible(true)
 		dialog.get_node("Text").set_bbcode(dialog.dialog_character_2[dialogs_page["char_2"]["page"]])
@@ -63,17 +57,10 @@ func _dialogs() -> void:
 		dialogs_page["char_4"]["talked"] = true
 		if dialogs_page["char_4"]["talked"] and dialogs_page["char_4"]["page"] <= 1:
 			dialogs_page["char_4"]["page"] += 1
+		elif is_enemy_dead:
+			dialogs_page["char_4"]["page"] = 3
 		print("character 4")
 		
-	elif self.name == "Shovel":
-		is_talkable = false
-		dialog.set_visible(true)
-		dialog.get_node("Text").set_bbcode(dialog.shovel[0])
-		dialog.get_node("Text").set_visible_characters(0)
-		dialogs_page["char_2"]["shovel"] = true
-		portal.is_open = true
-		print("Taken the shovel")
-		print(dialogs_page["char_2"]["shovel"])
 
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
