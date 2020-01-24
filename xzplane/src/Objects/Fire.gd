@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 func _on_Timer_timeout() -> void:
 	to_move = true
 	$coin.set_visible(true)
-	print("Fire reload")
+	#print("Fire reload")
 
 
 func _on_Area2D_body_entered(body: PhysicsBody2D) -> void:

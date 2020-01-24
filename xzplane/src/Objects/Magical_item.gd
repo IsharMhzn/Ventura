@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var is_talkable = true
 var is_inside_area = false
+var shovel = false
 
 onready var portal = get_parent().get_node("Portal")
 onready var dialog: Panel = $DialogBox
@@ -14,12 +15,14 @@ func _process(delta: float) -> void:
 			dialog.set_visible(true)
 			dialog.get_node("Text").set_bbcode(dialog.magical_item[0])
 			dialog.get_node("Text").set_visible_characters(0)
-			portal.set_visible(true)
 			print("Taken the magical item.")
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	print("Dialogue box will appear")
 	is_inside_area = true
+	shovel = true
+	print(shovel, "shovel is taken")
+	emit_signal("shovel_signal",true)
 
 
 func _on_Area2D_area_exited(area: Area2D) -> void:

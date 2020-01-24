@@ -1,5 +1,6 @@
 extends Entity
 
+const bullet = preload("res://src/Objects/Bullet.tscn")
 var health = 1500
 
 func _ready() -> void:
@@ -17,6 +18,12 @@ func _physics_process(delta: float) -> void:
 	if health < 0:
 		position = Vector2(50.0,150.0)
 		health = 150
+		
+	if Input.is_action_pressed("Space"):
+		fire_bullet()
+
+func fire_bullet() -> void:
+	var inst_bullet = bullet.instance()
 
 func get_input_axis() -> int:
 	var vertex = Vector2.ZERO

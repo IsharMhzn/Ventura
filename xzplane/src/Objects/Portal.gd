@@ -2,6 +2,7 @@ extends Area2D
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 export var is_open = false
+var used_portal = false
 
 func _ready() -> void:
 	set_visible(false)
@@ -11,6 +12,7 @@ func _process(delta: float) -> void:
 
 func _on_Portal2D_body_entered(body: PhysicsBody2D) -> void:
 	if visible:
+		used_portal = true
 		print("portal entered")
 		body.position.x = 1000
 		body.position.y = 4500
